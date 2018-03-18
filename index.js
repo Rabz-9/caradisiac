@@ -1,66 +1,36 @@
 const {getBrands} = require('node-car-api');
 const {getModels} = require('node-car-api');
 var elasticsearch = require('elasticsearch');
+var fs = require('fs');
 
-
+//Get all the Brands from Caradisiac Website
 async function getBrand(){
   const brands = await getBrands();
   console.log(brands);
   return brands;
 }
 
-// var allcaradisiac ={};
+//For all brands, pick all the Model;
 async function getModel(string){
   const models = await getModels(string);
   console.log(models);
+  return models;
 }
 
+
+//Call the function that pick all the Brands & store all the Brands in a variable
 let brands = getBrand();
 
+//Promise, that for each brand we're going to find all the model and information about the model
 brands.then(function(result){
-  // console.log(result);
   for (var i = 0; i < result.length; i++) {
     details = getModel(result[i]);
+    details.then(function(result){
+      result.forEach(function(res){
+        final_result = JSON.stringify(res);
+        console.log("Final Result " + final_result);
+        fs.appendFileSync("./SUVInformation.json", final_result + "\r\n", null, 'utf8', (err) => {});
+      })
+    })
   }
 });
-// brand.then(function(result){
-//   for(var i = 0 ; i < result.length ; i++)
-//   {
-//     description = getModel(result[i]);
-//   }
-// })
-// var elasticsearch = require('elasticsearch');
-// var client = new elasticsearch.Client({
-//   host: 'localhost:9200',
-//   log: 'trace'
-// });
-// client.ping({
-//   // ping usually has a 3000ms timeout
-//   requestTimeout: 1000
-// }, function(error) {
-//   if (error) {
-//     console.trace('elasticsearch cluster is down!');
-//   } else {
-//     console.log('All is well');
-//   }
-// });
-
-// var body = [];
-// for (var i = 0; i < stocks.length; i++ ) {
-//     delete stocks[i]._id;
-//     var config = { index:  { _index: 'stocks', _type: 'stock', _id: i } };
-//     body.push(config);
-//     body.push(stocks[i]);
-// }
-//
-// client.bulk({
-//     body: body
-// }, function (error, response) {
-//     if (error) {
-//         console.error(error);
-//         return;
-//     }
-//     else {
-//         console.log(response);  //  I don't recommend this but I like having my console flooded with stuff.  It looks cool.  Like I'm compiling a kernel really fast.
-//     }
-// });
