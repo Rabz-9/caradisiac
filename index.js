@@ -28,8 +28,8 @@ brands.then(function(result){
     details.then(function(result){
       result.forEach(function(res){
         final_result = JSON.stringify(res);
-        console.log("Final Result " + final_result);
-        fs.appendFileSync("./SUVInformation.json", final_result + "\r\n", null, 'utf8', (err) => {});
+        console.log("On affiche le premier element " + res['uuid']);
+        fs.appendFileSync("./SUVInformation.json",  final_result + "\r\n", null, 'utf8', (err) => {});
       })
     })
   }
