@@ -3,6 +3,8 @@ var fs = require('fs');
 var data = fs.readFileSync("./SUVInformation.json", "utf8");
 var cars = data.split("\n");
 var car_content = [];
+
+//Parse the volume 
 for (var i = 0; i < cars.length - 1; i++) {
   car_content[i] = JSON.parse(cars[i]);
   car_content[i].volume = parseInt(car_content[i].volume);
