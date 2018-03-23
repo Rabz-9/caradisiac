@@ -27,9 +27,9 @@ brands.then(function(result){
     details = getModel(result[i]);
     details.then(function(result){
       result.forEach(function(res){
+        res['volume'] = parseInt(res['volume']);
         final_result = JSON.stringify(res);
-        console.log("On affiche le premier element " + res['uuid']);
-        fs.appendFileSync("./SUVInformation.json",  final_result + "\r\n", null, 'utf8', (err) => {});
+        fs.appendFileSync("./TestNumber.json",  final_result + "\r\n", null, 'utf8', (err) => {});
       })
     })
   }
