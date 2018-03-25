@@ -10,6 +10,7 @@
 - [Setup](#setup)
 - [Description](#description)
 - [Populate](#populate)
+- [Results](#results)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -22,6 +23,10 @@
 First of all, to launch the project we need a device with 'NodeJs' installed. You can install it [here](https://nodejs.org/en/)
 
 Then, we have to install all the packages required for the project. To achieved that use the following commands :
+
+- We need a device with 'ElasticSearch' installed. You can install it [here](https://www.elastic.co/fr/downloads/elasticsearch)
+
+- Then, launch ElasticSearch on localhost on port 9200.
 
 * Install the packages :
 
@@ -48,3 +53,13 @@ The api
 ## Populate
 
 1. Use the package [node-car-api](https://github.com/92bondstreet/node-car-api) to get all records in json format
+
+## Results
+
+Calling the route **/populate** :
+
+![alt text](/img/populate.png "Screen 1")
+
+Calling the route **/suv** :
+
+![alt text](/img/suv.png "Screen 2")
