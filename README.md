@@ -58,8 +58,8 @@ The api
 
 Calling the route **/populate** :
 
-![alt text](/img/populate.png "Screen 1")
+![alt text](/img/populate.PNG "Screen 1")
 
 Calling the route **/suv** :
 
-![alt text](/img/suv.png "Screen 2")
+![alt text](/img/suv.PNG "Screen 2")
